@@ -4,8 +4,10 @@
 ### License: MIT
 ### Appname: Home
 ### Built-in: hide
+
 import os
 import json
+
 if 'main.json' in os.listdir():
     try:
         with open('main.json', 'r') as f:
@@ -34,7 +36,6 @@ import onboard
 import dialogs
 from app import *
 import sys
-
 
 def draw_battery(back_colour,percent, win_bv):
 	percent = max(0,percent)
