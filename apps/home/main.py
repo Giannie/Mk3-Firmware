@@ -4,10 +4,22 @@
 ### License: MIT
 ### Appname: Home
 ### Built-in: hide
+import os
+import json
+if 'main.json' in os.listdir():
+    try:
+        with open('main.json', 'r') as f:
+            main_dict = json.loads(f.read())
+            m = main_dict['main']
+            if not main_dict.get('perm', False):
+                os.remove('main.json')
+		if m:
+			execfile(m)
+    except Exception as e:
+		print(e)
 
 import ugfx
 import pyb
-import os
 from database import *
 from filesystem import *
 import buttons
@@ -22,6 +34,7 @@ import onboard
 import dialogs
 from app import *
 import sys
+
 
 def draw_battery(back_colour,percent, win_bv):
 	percent = max(0,percent)
